@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
+import { BeerCardComponent } from './components/beer-card/beer-card.component';
+import { FeatureModule } from './feature/feature.module';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { HeaderComponent } from './components/header/header.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    BeerCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FeatureModule
   ],
   providers: [],
   bootstrap: [AppComponent]

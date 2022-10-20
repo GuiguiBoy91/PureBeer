@@ -4,6 +4,29 @@
         <div class="col-12">
         <h1 class="d-flex align-items-center justify-content-center">Welcome to <img src="assets/images/logo.svg" width="50"/> PureBeer</h1>
         <p class="text-center">The best place to find your favorite beer</p>
+        <div class="d-flex justify-content-center p-4">
+            <button class="btn btn-dark" *ngIf="isLoged">+ Add your favorite beer</button>
+            <div class="btn-error-pop d-flex flex-column align-items-center">
+                <button class="btn btn-dark disabled" *ngIf="!isLoged">+ Add your favorite beer</button>
+                <p class="pop-up-error" *ngIf="!isLoged"> You need to be logged </p>
+            </div>
+        </div>
+        <h2>Best Beers</h2>
+        <div class="beers-container">
+            <div class="card" style="width: 18rem;">
+                <img src="assets/images/beers/Leffe-Blonde.png" class="card-img-top" alt="Leffe-Blonde">
+                <div class="card-body">
+                  <h5 class="card-title">Leffe-Blonde</h5>
+                  <p class="card-text">Bière Blonde</p>
+                  <div class="rating p-1 position-relative">  
+                    <app-star-rating [rating]="4.5" [isReadOnly]="true"></app-star-rating>
+                    <span class="rating-value">4.5</span>
+                  </div>
+                  <p class="card-text">(5864 rating)</p>
+                  <a href="#" class="btn btn-darkp">View</a>
+                </div>
+              </div>
+        </div>
         </div>
     </div>
 </div>
