@@ -10,6 +10,7 @@
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
         name="username"
+        [(ngModel)]="username"
       />
     </div>
     <div class="mb-3">
@@ -19,8 +20,12 @@
         class="form-control"
         id="exampleInputPassword1"
         name="password"
+        [(ngModel)]="password"
       />
     </div>
-    <button type="submit" class="btn btn-dark">Login</button>
+    <div class="btn-container">
+      <div class="error">{{ errorMsg }}</div>
+      <button type="submit" class="btn btn-dark" (click)="login()">Login</button>
+    </div>
   </form>
 </div>

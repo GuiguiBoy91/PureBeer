@@ -19,10 +19,18 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li> -->
         </ul>
+        <div *ngIf="isLoged == false">
         <form class="d-flex">
           <button class="me-2 btn btn-outline-secondary" (click)="goToLogin()">Login</button>
           <button class="btn btn-secondary" (click)="goToRegister()">Register</button>
         </form>
+      </div>
+      <div *ngIf="isLoged == true">
+        <form class="d-flex align-items-center">
+          <h6 class="text-light mb-0 me-3">Hi ! {{user.username}}</h6>
+          <button class="me-2 btn btn-outline-danger" (click)="Logout()">Logout</button>
+        </form>
+      </div>
       </div>
     </div>
   </nav>

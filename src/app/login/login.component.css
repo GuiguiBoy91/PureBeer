@@ -1,0 +1,9 @@
+.error{
+    position: absolute;
+    right: 0px;
+    color: red;
+}
+
+.btn-container{
+    position: relative;
+}
