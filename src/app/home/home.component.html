@@ -5,7 +5,7 @@
         <h1 class="d-flex align-items-center justify-content-center">Welcome to <img src="assets/images/logo.svg" width="50"/> PureBeer</h1>
         <p class="text-center">The best place to find your favorite beer</p>
         <div class="d-flex justify-content-center p-4">
-            <button class="btn btn-dark" *ngIf="isLoged">+ Add your favorite beer</button>
+            <button class="btn btn-dark" *ngIf="isLoged" (click)="goToAdd()">+ Add your favorite beer</button>
             <div class="btn-error-pop d-flex flex-column align-items-center">
                 <button class="btn btn-dark disabled" *ngIf="!isLoged">+ Add your favorite beer</button>
                 <p class="pop-up-error" *ngIf="!isLoged"> You need to be logged </p>
@@ -23,7 +23,7 @@
                     <span class="rating-value">4.5</span>
                   </div>
                   <p class="card-text">(5864 rating)</p>
-                  <a href="#" class="btn btn-darkp">View</a>
+                  <a href="#" class="btn btn-dark">View</a>
                 </div>
               </div>
         </div>

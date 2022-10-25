@@ -34,4 +34,8 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  goToAdd(){
+    this.router.navigate(['add']);
+  }
+
 }

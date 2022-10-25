@@ -1,0 +1,16 @@
+.error{
+    position: absolute;
+    right: 0px;
+    color: red;
+}
+
+.succes{
+    position: absolute;
+    right: 0px;
+    color: green;
+}
+
+
+.btn-container{
+    position: relative;
+}

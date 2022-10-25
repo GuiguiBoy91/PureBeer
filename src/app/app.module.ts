@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { BeerCardComponent } from './components/beer-card/beer-card.component';
 import { FeatureModule } from './feature/feature.module';
+import { AddBeerComponent } from './add-beer/add-beer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FeatureModule } from './feature/feature.module';
     RegisterComponent,
     HomeComponent,
     HeaderComponent,
-    BeerCardComponent
+    BeerCardComponent,
+    AddBeerComponent
   ],
   imports: [
     BrowserModule,
