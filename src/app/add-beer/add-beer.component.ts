@@ -13,8 +13,15 @@ export class AddBeerComponent implements OnInit {
 
   name="";
   description="";
+  meData:any;
+  typeId=0;
+  beerAdded:any;
+
   errorMsg="";
   succesMsg="";
+  
+  selectedFile!: File;
+  types: any;
   isLoged: boolean = false;
 
   constructor(    
@@ -25,6 +32,7 @@ export class AddBeerComponent implements OnInit {
 
   ngOnInit(): void {
     this.verifyToken();
+    this.getAllTypes();
   }
 
   verifyToken() {
@@ -36,16 +44,67 @@ export class AddBeerComponent implements OnInit {
         this.router.navigate(['login']);
       }
     );
+
+    this.http
+    .get(environment.apiUrl + '/users/me', {
+      headers: { Authorization: 'Bearer ' + localStorage.getItem('token') },
+    })
+    .subscribe(
+      (res) => {
+        this.meData=res
+      }
+    );
+  }
+
+  updateType(event: any){
+    this.typeId = event.target.value;
+  }
+
+
+  addBeerPicture(beer_id: any){
+    const fd = new FormData();
+    fd.append('picture', this.selectedFile, this.selectedFile.name);
+    this.http.post(environment.apiUrl + '/beers/' + beer_id + '/picture', fd, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      }}).subscribe(
+      (err) => {
+        this.errorMsg = "Error adding beer picture";
+      }
+    );
   }
 
   addBeer(){
-    this.http.post(environment.apiUrl + '/beer', {name: this.name}).subscribe(
+    this.http.post(environment.apiUrl + '/beers', {
+      name: this.name,
+      description: this.description,
+      userId: this.meData.id,
+      typeId: Number(this.typeId)
+    }, {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).subscribe(
       (res) => {
+        this.beerAdded = res;        
+        this.addBeerPicture(this.beerAdded.data.beer.id);
         this.succesMsg = "Beer added";
       }, (err) => {
+        console.log(err);
         this.errorMsg = "Error adding beer";
       }
     );
+  }
+
+  getAllTypes(){
+    this.http.get(environment.apiUrl + '/types', {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).subscribe(
+      (res) => {
+        this.types = res;
+        
+      }, (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  onFileSelected(event: any){
+    this.selectedFile = <File>event.target.files[0];
   }
 
 }

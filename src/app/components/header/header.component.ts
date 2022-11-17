@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { environment } from 'src/environments/environment';
@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+
+  @Input() page: string = "";
   isLoged: boolean = false;
   user: any;
 
@@ -45,6 +47,10 @@ export class HeaderComponent implements OnInit {
 
   goToHome() {
     this.router.navigate(['home']);
+  }
+
+  goToCatalog() {
+    this.router.navigate(['catalog']);
   }
 
   goToLogin() {

@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { BeerCardComponent } from './components/beer-card/beer-card.component';
 import { FeatureModule } from './feature/feature.module';
 import { AddBeerComponent } from './add-beer/add-beer.component';
+import { CatalogComponent } from './catalog/catalog.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddBeerComponent } from './add-beer/add-beer.component';
     HomeComponent,
     HeaderComponent,
     BeerCardComponent,
-    AddBeerComponent
+    AddBeerComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,

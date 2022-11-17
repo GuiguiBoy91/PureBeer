@@ -1,0 +1,27 @@
+<app-header [page]='"catalog"'></app-header>
+<div class="container">
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-12">
+        <h1 class="d-flex align-items-center justify-content-center">Beers catalog <img src="assets/images/logo.svg" width="50"/></h1>
+        <div class="mb-5" *ngFor="let type of types?.data?.types" >
+            <h2>{{type.name}}</h2>
+            <div class="beers-container">
+                <div class="card" style="width: 18rem;" *ngFor="let beer of filterBeer(beers?.data?.beers, type)">
+                    <img src={{imgPath(beer.picture)}} class="card-img-top" alt="Leffe-Blonde">
+                    <div class="card-body">
+                    <h5 class="card-title">{{beer.name}}</h5>
+                    <p class="card-text">{{type.name}}</p>
+                    <div class="rating p-1 position-relative">  
+                        <app-star-rating [rating]="4.5" [isReadOnly]="true"></app-star-rating>
+                        <span class="rating-value">4.5</span>
+                    </div>
+                    <p class="card-text">(5864 rating)</p>
+                    <a href="#" class="btn btn-dark">View</a>
+                    </div>
+                </div>
+                <div *ngIf="filterBeer(beers?.data?.beers, type).length === 0">
+                    <h3 class="ms-2 text-danger" >No beers found for this type</h3>
+                </div>
+        </div>
+    </div>
+</div>

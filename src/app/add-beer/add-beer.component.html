@@ -4,7 +4,7 @@
         <h1 class="d-flex align-items-center justify-content-center">Add your favorite <img src="assets/images/logo.svg" width="50"/> Beer</h1>
     </div>
     <div class="container border rounded p-4 shadow-lg" style="margin-top: 50px">
-        <form>
+        <form enctype="multipart/form-data">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Name</label>
             <input
@@ -27,15 +27,13 @@
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">Picture</label>
-            <input class="form-control" type="file" id="formFile">
+            <input class="form-control" type="file" name="picture" id="formFile" (change)="onFileSelected($event)">
           </div>
           <div class="mb-3">
-            <label for="selectType" class="form-label">Picture</label>
-            <select id="selectType" class="form-select" aria-label=".form-select-lg example">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <label for="selectType" class="form-label">Type of beer</label>
+            <select id="selectType" class="form-select" aria-label=".form-select-lg example" (change)="updateType($event)">
+              <option selected disabled>--> select here <--</option>
+              <option value="1" *ngFor="let type of types?.data?.types" [value]="type.id"  >{{type.name}}</option>
             </select>
           </div>
             <div class="btn-container">
